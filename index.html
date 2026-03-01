@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maia · Coaching & Begleitung</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Maia · Persönliches Coaching & Begleitung" />
+  <meta property="og:description" content="Coaching für persönliche Entwicklung – ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://maia-coaching.de/" />
+  <meta property="og:image"       content="images/walk.jpg" />
+  <meta property="og:locale"      content="de_DE" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="description"        content="Coaching für persönliche Entwicklung – ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      filter: blur(1.5px) brightness(1.02);
+      transform: scale(1.02); /* verhindert weißen Rand durch blur */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 8vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: .6rem;
+      color: #1a1208;
+      text-shadow: 0 1px 0 rgba(255,255,255,.3);
+    }
+    .hero-content .tagline {
+      font-size: .9rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
+      margin-bottom: 1.75rem;
+    }
+    .btn-cta {
+      display: inline-block;
+      padding: .55rem 1.6rem;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.7);
+      color: #fff;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      border-radius: 100px;
+      transition: background .2s;
+      text-shadow: 0 1px 3px rgba(0,0,0,.3);
+    }
+    .btn-cta:hover { background: rgba(255,255,255,.3); }
+    .hero-down {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,.7);
+      text-shadow: 0 1px 4px rgba(0,0,0,.4);
+      font-size: 1.1rem;
+      animation: nudge 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes nudge {
+      from { transform: translateX(-50%) translateY(0); }
+      to   { transform: translateX(-50%) translateY(5px); }
+    }
+
+    #testimonials     { background: var(--bg); }
+    #methods-approach { background: var(--bg-soft); }
+    #blog             { background: var(--bg-soft); }
+
+    /* ── FEEDBACK NAVIGATION ── */
+    .feedback-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+    .feedback-dots { display: flex; gap: .4rem; }
+    .feedback-arrow {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--muted);
+      transition: border-color .2s, color .2s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .feedback-arrow:hover { border-color: var(--green); color: var(--green); }
+    .feedback-arrow svg {
+      width: 13px; height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── MOBILE MENU ── */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .3rem;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform .25s, opacity .2s;
+      transform-origin: center;
+    }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 54px; left: 0; right: 0;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: block;
+      padding: .75rem 0;
+      font-size: .92rem;
+      color: var(--body-text);
+      border-bottom: 1px solid var(--border);
+      letter-spacing: .02em;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-lang {
+      display: flex;
+      gap: .5rem;
+      padding-top: 1rem;
+    }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: .1rem;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .75rem;
+      color: var(--muted);
+      padding: .2rem .35rem;
+      border-radius: 3px;
+      transition: color .18s, background .18s;
+      letter-spacing: .04em;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active {
+      color: var(--text);
+      font-weight: 500;
+      background: var(--border);
+    }
+    .lang-sep {
+      color: var(--border);
+      font-size: .65rem;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .js-ready .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .js-ready .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .08s; }
+    .reveal-delay-2 { transition-delay: .16s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    @media (max-width: 640px) {
+      .menu-toggle  { display: flex; }
+      .lang-switcher { display: none !important; }
+      .nav-globe    { display: none !important; }
+    }
+  </style>
+  <noscript><style>.js-ready .reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Maia</a>
+  <ul class="nav-links">
+    <li><a href="#hero"             data-i18n="nav_home">Home</a></li>
+    <li><a href="#about"            data-i18n="nav_about">Über mich</a></li>
+    <li><a href="#methods-approach" data-i18n="nav_method">Methode</a></li>
+    <li><a href="#methods-approach" data-i18n="nav_process">Ablauf</a></li>
+    <li><a href="#testimonials"     data-i18n="nav_feedback">Feedback</a></li>
+    <li><a href="#contact"          data-i18n="nav_contact">Kontakt</a></li>
+    <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <svg class="nav-globe" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M3.6 9h16.8M3.6 15h16.8"/>
+      <path d="M12 3a13.5 13.5 0 0 1 0 18M12 3a13.5 13.5 0 0 0 0 18"/>
+    </svg>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero"             onclick="closeMenu()" data-i18n="nav_home">Home</a>
+  <a href="#about"            onclick="closeMenu()" data-i18n="nav_about">Über mich</a>
+  <a href="#methods-approach" onclick="closeMenu()" data-i18n="nav_method">Methode</a>
+  <a href="#methods-approach" onclick="closeMenu()" data-i18n="nav_process">Ablauf</a>
+  <a href="#testimonials"     onclick="closeMenu()" data-i18n="nav_feedback">Feedback</a>
+  <a href="#contact"          onclick="closeMenu()" data-i18n="nav_contact">Kontakt</a>
+  <a href="#blog" data-i18n="nav_blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" onclick="setLang('de');closeMenu()">DE</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" onclick="setLang('fr');closeMenu()">FR</button>
+    <span class="lang-sep">|</span>
+    <button class="lang-btn" onclick="setLang('en');closeMenu()">EN</button>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <img class="hero-img"
+    src="images/walk.jpg"
+    alt="Weg durch Weinberge"
+  />
+  <div class="hero-content">
+    <h1>Maia</h1>
+    <p class="tagline" data-i18n="hero_tagline">Persönliches Coaching & Begleitung</p>
+    <a href="#contact" class="btn-cta" data-i18n="hero_cta">Jetzt Kontakt aufnehmen</a>
+  </div>
+  <div class="hero-down" aria-hidden="true">↓</div>
+</section>
+
+<!-- ── ÜBER MICH ── -->
+<section class="page-section" id="about">
+  <div class="content-col">
+    <div class="card about-card reveal">
+      <img class="about-portrait"
+        src="images/portrait.webp"
+        alt="Portrait Uli K."
+      />
+      <div class="about-text-block">
+        <h2 data-i18n="about_title">Über mich</h2>
+        <p data-i18n="about_text">Ich bin Uli K., Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit.</p>
+        <button class="toggle-btn" onclick="toggleAbout(this)">
+          <span data-i18n="about_more">Mehr erfahren</span> <span class="chev">↓</span>
+        </button>
+        <div class="about-extra">
+          <p style="font-size:.85rem;color:var(--body-text);margin-bottom:.75rem;" data-i18n="about_focus_label">Meine Schwerpunkte:</p>
+          <ul class="focus-list">
+            <li data-i18n="focus_1">Persönliche Entwicklung</li>
+            <li data-i18n="focus_2">Zielklarheit & Strategie</li>
+            <li data-i18n="focus_3">Workshops & Coaching</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── METHODE & ABLAUF ── -->
+<section class="page-section" id="methods-approach">
+  <div class="content-col-wide">
+    <div class="two-cards">
+
+      <div class="card method-card reveal">
+        <span class="icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </span>
+        <h3 data-i18n="method_title">Methode</h3>
+        <p data-i18n="method_text">Persönliches Einzelcoaching, maßgeschneidert auf Ihre Ziele. Wir erarbeiten Strategien für Entwicklung und Wachstum.</p>
+        <a href="methods.html" class="card-link" data-i18n="method_link">Mehr erfahren →</a>
+      </div>
+
+      <div class="card method-card reveal reveal-delay-1">
+        <span class="icon-circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.5"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><circle cx="18" cy="8" r="2.5"/><path d="M22 20c0-2.5-2.2-4.5-5-4.5"/></svg>
+        </span>
+        <h3 data-i18n="process_title">Ablauf</h3>
+        <p data-i18n="process_text">Gruppenworkshops, in denen Zusammenarbeit, Kreativität und gegenseitige Unterstützung im Vordergrund stehen.</p>
+        <button class="toggle-btn card-link" onclick="toggleSteps(this)">
+          <span data-i18n="process_toggle">Schritte anzeigen</span> <span class="chev">↓</span>
+        </button>
+        <div class="card-steps-block">
+          <ol class="steps-list">
+            <li data-i18n="step_1">Erstgespräch – Kennenlernen und Ziele definieren.</li>
+            <li data-i18n="step_2">Individuelle Analyse – Stärken, Potenziale und Herausforderungen.</li>
+            <li data-i18n="step_3">Begleitung – Umsetzungsschritte und Feedback.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FEEDBACK ── -->
+<section class="page-section centered" id="testimonials">
+  <div class="content-col">
+    <h2 class="section-heading reveal" data-i18n="feedback_title">Feedback</h2>
+    <div style="margin-top:1.75rem;" class="reveal reveal-delay-1">
+      <div class="feedback-quote-icon">&ldquo;&rdquo;</div>
+      <p class="feedback-quote" id="q-text"></p>
+      <p class="feedback-author" id="q-author"></p>
+    </div>
+    <div class="feedback-nav">
+      <button class="feedback-arrow" onclick="stepQuote(-1)" aria-label="Vorheriges Zitat">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="feedback-dots">
+        <button class="dot active" onclick="showQuote(0,this)" aria-label="1"></button>
+        <button class="dot"        onclick="showQuote(1,this)" aria-label="2"></button>
+        <button class="dot"        onclick="showQuote(2,this)" aria-label="3"></button>
+      </div>
+      <button class="feedback-arrow" onclick="stepQuote(1)" aria-label="Nächstes Zitat">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section class="page-section" id="blog">
+  <div class="content-col-wide">
+    <div class="blog-header">
+      <h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        Blog
+      </h2>
+      <a href="#" class="blog-all" data-i18n="blog_all">Zum Blog auf Substack ↗</a>
+    </div>
+    <p class="blog-sub" data-i18n="blog_sub">Aktuelle Artikel – erschienen auf meinem Substack.</p>
+
+    <a href="#" class="blog-featured reveal">
+      <img class="blog-featured-img"
+        src="images/clearity-unsplash.jpg"
+        alt="Coaching Artikel"
+      />
+      <div class="blog-body">
+        <div class="blog-tag" data-i18n="blog1_tag">Coaching · Entwicklung</div>
+        <div class="blog-title blog-title-lg" data-i18n="blog1_title">Warum Klarheit der erste Schritt zu echtem Wandel ist</div>
+        <p class="blog-excerpt" data-i18n="blog1_excerpt">Viele Menschen wissen, dass sie etwas verändern möchten – aber nicht, wo sie anfangen sollen. Klarheit über die eigenen Werte ist der entscheidende erste Schritt.</p>
+        <span class="blog-readmore" data-i18n="blog_read">Weiterlesen ↗</span>
+      </div>
+    </a>
+
+    <div class="blog-two">
+      <a href="#" class="blog-card reveal">
+        <div class="blog-tag">Tutorial</div>
+        <div class="blog-title" data-i18n="blog2_title">Innere Stärken erkennen und gezielt einsetzen</div>
+        <p class="blog-excerpt" data-i18n="blog2_excerpt">Wir alle haben Ressourcen, die wir kaum nutzen.</p>
+        <span class="blog-readmore" data-i18n="blog_read">Weiterlesen →</span>
+      </a>
+      <a href="#" class="blog-card reveal reveal-delay-1">
+        <div class="blog-tag">Coaching</div>
+        <div class="blog-title" data-i18n="blog3_title">Wenn Veränderung sich falsch anfühlt – und trotzdem richtig ist</div>
+        <p class="blog-excerpt" data-i18n="blog3_excerpt">Veränderung ist selten bequem.</p>
+        <span class="blog-readmore" data-i18n="blog_read">Weiterlesen →</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── KONTAKT ── -->
+<section class="section-contact" id="contact">
+  <h2 class="reveal" data-i18n="contact_heading">Ich freue mich darauf,<br>von Ihnen zu hören!</h2>
+  <a href="/cdn-cgi/l/email-protection#62090d0c16030916220f030b034c0607" class="contact-btn reveal reveal-delay-1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="m2 7 10 7 10-7"/>
+    </svg>
+    <span class="__cf_email__" data-cfemail="4e2521203a2f253a0e232f272f602a2b">[email&#160;protected]</span>
+  </a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span>© 2026 Maia – <span data-i18n="footer_tagline">Persönliches Coaching & Begleitung</span></span>
+  <div class="footer-links">
+    <a href="impressum.html" data-i18n="footer_imprint">Impressum</a>
+    <a href="impressum.html#datenschutz" data-i18n="footer_privacy">Datenschutz</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ═══════════════════════════════════════════
+   ÜBERSETZUNGEN / TRANSLATIONS
+   ═══════════════════════════════════════════ */
+const i18n = {
+  de: {
+    nav_home:'Home', nav_about:'Über mich', nav_method:'Methode',
+    nav_process:'Ablauf', nav_feedback:'Feedback', nav_contact:'Kontakt', nav_blog:'Blog',
+    hero_tagline:'Persönliches Coaching & Begleitung',
+    hero_cta:'Jetzt Kontakt aufnehmen',
+    about_title:'Über mich',
+    about_text:'Ich bin Uli K., Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit.',
+    about_more:'Mehr erfahren', about_less:'Weniger anzeigen',
+    about_focus_label:'Meine Schwerpunkte:',
+    focus_1:'Persönliche Entwicklung', focus_2:'Zielklarheit & Strategie', focus_3:'Workshops & Coaching',
+    method_title:'Methode',
+    method_text:'Persönliches Einzelcoaching, maßgeschneidert auf Ihre Ziele. Wir erarbeiten Strategien für Entwicklung und Wachstum.',
+    method_link:'Mehr erfahren →',
+    process_title:'Ablauf',
+    process_text:'Gruppenworkshops, in denen Zusammenarbeit, Kreativität und gegenseitige Unterstützung im Vordergrund stehen.',
+    process_toggle:'Schritte anzeigen', process_hide:'Ausblenden',
+    step_1:'Erstgespräch – Kennenlernen und Ziele definieren.',
+    step_2:'Individuelle Analyse – Stärken, Potenziale und Herausforderungen.',
+    step_3:'Begleitung – Umsetzungsschritte und Feedback.',
+    feedback_title:'Feedback',
+    quotes:[
+      {text:'Uli hat mir geholfen, Klarheit über meine Ziele zu bekommen und selbstbewusster Entscheidungen zu treffen.', author:'— Max M.'},
+      {text:'Die Begleitung war genau richtig. Ich fühle mich jetzt viel klarer in meinem Weg.', author:'— Sara L., Zürich'},
+      {text:'Ich hätte nicht gedacht, wie viel sich in kurzer Zeit verschieben kann. Danke für diesen Raum.', author:'— Jonas W., Berlin'},
+    ],
+    blog_all:'Zum Blog auf Substack ↗',
+    blog_sub:'Aktuelle Artikel – erschienen auf meinem Substack.',
+    blog_read:'Weiterlesen ↗',
+    blog1_tag:'Coaching · Entwicklung',
+    blog1_title:'Warum Klarheit der erste Schritt zu echtem Wandel ist',
+    blog1_excerpt:'Viele Menschen wissen, dass sie etwas verändern möchten – aber nicht, wo sie anfangen sollen. Klarheit über die eigenen Werte ist der entscheidende erste Schritt.',
+    blog2_title:'Innere Stärken erkennen und gezielt einsetzen',
+    blog2_excerpt:'Wir alle haben Ressourcen, die wir kaum nutzen. Wie Sie Ihre individuellen Stärken entdecken und als Grundlage für Ihren Weg nutzen.',
+    blog3_title:'Wenn Veränderung sich falsch anfühlt – und trotzdem richtig ist',
+    blog3_excerpt:'Veränderung ist selten bequem. Warum Widerstand kein Zeichen ist, aufzuhören – sondern oft das Gegenteil.',
+    contact_heading:'Ich freue mich darauf,<br>von Ihnen zu hören!',
+    footer_tagline:'Persönliches Coaching & Begleitung',
+    footer_imprint:'Impressum', footer_privacy:'Datenschutz',
+  },
+
+  fr: {
+    nav_home:'Accueil', nav_about:'À propos', nav_method:'Méthode',
+    nav_process:'Déroulement', nav_feedback:'Avis', nav_contact:'Contact', nav_blog:'Blog',
+    hero_tagline:'Coaching personnel & accompagnement',
+    hero_cta:'Prendre contact',
+    about_title:'À propos de moi',
+    about_text:'Je suis Uli K., coach en développement personnel. J\'aide les gens à découvrir leurs forces et à poursuivre leurs objectifs avec clarté. Valeurs : authenticité, confiance, clarté.',
+    about_more:'En savoir plus', about_less:'Réduire',
+    about_focus_label:'Mes domaines :',
+    focus_1:'Développement personnel', focus_2:'Clarté des objectifs & stratégie', focus_3:'Ateliers & coaching',
+    method_title:'Méthode',
+    method_text:'Coaching individuel personnalisé selon vos objectifs. Nous élaborons des stratégies pour votre développement et votre croissance.',
+    method_link:'En savoir plus →',
+    process_title:'Déroulement',
+    process_text:'Ateliers de groupe où la collaboration, la créativité et le soutien mutuel sont au premier plan.',
+    process_toggle:'Voir les étapes', process_hide:'Masquer',
+    step_1:'Premier entretien – Faire connaissance et définir les objectifs.',
+    step_2:'Analyse individuelle – Forces, potentiels et défis.',
+    step_3:'Accompagnement – Étapes de mise en œuvre et retours.',
+    feedback_title:'Avis',
+    quotes:[
+      {text:'Uli m\'a aidée à voir clair dans mes objectifs et à prendre des décisions avec plus de confiance.', author:'— Max M.'},
+      {text:'L\'accompagnement était juste ce qu\'il fallait. Je me sens aujourd\'hui beaucoup plus claire dans mon chemin.', author:'— Sara L., Zurich'},
+      {text:'Je n\'aurais pas imaginé à quel point les choses peuvent évoluer en si peu de temps. Merci pour cet espace.', author:'— Jonas W., Berlin'},
+    ],
+    blog_all:'Voir le blog sur Substack ↗',
+    blog_sub:'Articles récents – publiés sur mon Substack.',
+    blog_read:'Lire la suite ↗',
+    blog1_tag:'Coaching · Développement',
+    blog1_title:'Pourquoi la clarté est le premier pas vers un vrai changement',
+    blog1_excerpt:'Beaucoup de gens savent qu\'ils veulent changer quelque chose – mais pas par où commencer. La clarté sur ses valeurs est l\'étape décisive.',
+    blog2_title:'Reconnaître ses forces intérieures et les utiliser',
+    blog2_excerpt:'Nous avons tous des ressources que nous utilisons à peine. Comment découvrir vos forces et en faire la base de votre chemin.',
+    blog3_title:'Quand le changement semble faux – et est pourtant juste',
+    blog3_excerpt:'Le changement est rarement confortable. Pourquoi la résistance n\'est pas un signe d\'arrêter – mais souvent le contraire.',
+    contact_heading:'J\'ai hâte<br>d\'avoir de vos nouvelles !',
+    footer_tagline:'Coaching personnel & accompagnement',
+    footer_imprint:'Mentions légales', footer_privacy:'Confidentialité',
+  },
+
+  en: {
+    nav_home:'Home', nav_about:'About', nav_method:'Method',
+    nav_process:'Process', nav_feedback:'Feedback', nav_contact:'Contact', nav_blog:'Blog',
+    hero_tagline:'Personal Coaching & Guidance',
+    hero_cta:'Get in touch',
+    about_title:'About me',
+    about_text:'I\'m Uli K., a personal development coach. I help people discover their strengths and pursue their goals with clarity. Values: authenticity, trust, clarity.',
+    about_more:'Learn more', about_less:'Show less',
+    about_focus_label:'My focus areas:',
+    focus_1:'Personal development', focus_2:'Goal clarity & strategy', focus_3:'Workshops & coaching',
+    method_title:'Method',
+    method_text:'Individual coaching tailored to your goals. We develop strategies for personal growth and development.',
+    method_link:'Learn more →',
+    process_title:'Process',
+    process_text:'Group workshops where collaboration, creativity and mutual support take centre stage.',
+    process_toggle:'Show steps', process_hide:'Hide',
+    step_1:'Initial conversation – getting to know each other and defining goals.',
+    step_2:'Individual analysis – strengths, potential and challenges.',
+    step_3:'Ongoing support – implementation steps and feedback.',
+    feedback_title:'Feedback',
+    quotes:[
+      {text:'Uli helped me gain clarity about my goals and make decisions with more confidence.', author:'— Max M.'},
+      {text:'The support was exactly right – I feel so much clearer about my path now.', author:'— Sara L., Zurich'},
+      {text:'I wouldn\'t have believed how much could shift in such a short time. Thank you for this space.', author:'— Jonas W., Berlin'},
+    ],
+    blog_all:'Visit my Substack blog ↗',
+    blog_sub:'Latest articles – published on my Substack.',
+    blog_read:'Read more ↗',
+    blog1_tag:'Coaching · Development',
+    blog1_title:'Why clarity is the first step towards real change',
+    blog1_excerpt:'Many people know they want to change something – but not where to start. Clarity about your own values is the decisive first step.',
+    blog2_title:'Recognising inner strengths and using them',
+    blog2_excerpt:'We all have resources we barely use. How to discover your individual strengths and make them the foundation of your path.',
+    blog3_title:'When change feels wrong – and is right anyway',
+    blog3_excerpt:'Change is rarely comfortable. Why resistance is not a sign to stop – but often quite the opposite.',
+    contact_heading:'I look forward<br>to hearing from you!',
+    footer_tagline:'Personal Coaching & Guidance',
+    footer_imprint:'Legal Notice', footer_privacy:'Privacy Policy',
+  },
+};
+
+/* ═══════════════════════════════════════════
+   ENGINE
+   ═══════════════════════════════════════════ */
+let currentLang  = 'de';
+let currentQuote = 0;
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.documentElement.lang = lang;
+
+  // Translate every [data-i18n] element
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Re-render current quote in new language
+  showQuote(currentQuote, document.querySelectorAll('.dot')[currentQuote]);
+
+  // Fix expand-button texts that may already be open
+  document.querySelectorAll('.toggle-btn.open').forEach(btn => {
+    const span = btn.querySelector('[data-i18n]');
+    if (!span) return;
+    const key = span.getAttribute('data-i18n');
+    if (key === 'about_more')      span.textContent = t.about_less;
+    if (key === 'process_toggle')  span.textContent = t.process_hide;
+  });
+
+  // Update active lang button
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+}
+
+function showQuote(i, dot) {
+  currentQuote = i;
+  const q = i18n[currentLang].quotes[i];
+  document.getElementById('q-text').textContent   = q.text;
+  document.getElementById('q-author').textContent = q.author;
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+  if (dot) dot.classList.add('active');
+}
+
+function toggleAbout(btn) {
+  const extra = btn.nextElementSibling;
+  const open  = extra.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  const span = btn.querySelector('[data-i18n]');
+  span.textContent = open ? i18n[currentLang].about_less : i18n[currentLang].about_more;
+}
+
+function toggleSteps(btn) {
+  const block = btn.nextElementSibling;
+  const open  = block.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  const span = btn.querySelector('[data-i18n]');
+  span.textContent = open ? i18n[currentLang].process_hide : i18n[currentLang].process_toggle;
+}
+
+// ── Scroll Reveal ──
+document.body.classList.add('js-ready');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Browser-Sprache erkennen ──
+(function() {
+  const supported = ['de', 'fr', 'en'];
+  // navigator.languages gibt z.B. ['fr-CH', 'fr', 'de'] zurück
+  const preferred = (navigator.languages || [navigator.language || 'de'])
+    .map(l => l.slice(0, 2).toLowerCase())
+    .find(l => supported.includes(l));
+  if (preferred && preferred !== 'de') setLang(preferred);
+})();
+
+// Init first quote
+showQuote(0, document.querySelector('.dot'));
+
+function toggleMenu() {
+  const menu   = document.getElementById('mobileMenu');
+  const toggle = document.getElementById('menuToggle');
+  const open   = menu.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+}
+function stepQuote(dir) {
+  const total = i18n[currentLang].quotes.length;
+  const next  = (currentQuote + dir + total) % total;
+  showQuote(next, document.querySelectorAll('.dot')[next]);
+}
+</script>
+</body>
+</html>
