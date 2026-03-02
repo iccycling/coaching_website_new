@@ -10,7 +10,7 @@
   <meta property="og:description" content="Coaching für persönliche Entwicklung – ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://maia-coaching.de/" />
-  <meta property="og:image"       content="images/walk.jpg" />
+  <meta property="og:image"       content="https://iccycling.github.io/coaching_website_uli/blog/public/images/walk.jpg" />
   <meta property="og:locale"      content="de_DE" />
   <meta property="og:locale:alternate" content="fr_FR" />
   <meta property="og:locale:alternate" content="en_GB" />
@@ -91,9 +91,11 @@
       to   { transform: translateX(-50%) translateY(5px); }
     }
 
-    #testimonials     { background: var(--bg); }
-    #methods-approach { background: var(--bg-soft); }
-    #blog             { background: var(--bg-soft); }
+    /* ── SECTION BACKGROUNDS ── */
+    #about            { background: var(--white); }
+    #methods-approach { background: var(--bg); }
+    #testimonials     { background: var(--white); }
+    #blog             { background: var(--bg); }
 
     /* ── FEEDBACK NAVIGATION ── */
     .feedback-nav {
@@ -248,7 +250,7 @@
     <li><a href="#methods-approach" data-i18n="nav_process">Ablauf</a></li>
     <li><a href="#testimonials"     data-i18n="nav_feedback">Feedback</a></li>
     <li><a href="#contact"          data-i18n="nav_contact">Kontakt</a></li>
-    <li><a href="#blog" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="#blog"          data-i18n="nav_blog">Blog</a></li>
   </ul>
   <div class="nav-right">
     <svg class="nav-globe" viewBox="0 0 24 24" aria-hidden="true">
@@ -277,7 +279,7 @@
   <a href="#methods-approach" onclick="closeMenu()" data-i18n="nav_process">Ablauf</a>
   <a href="#testimonials"     onclick="closeMenu()" data-i18n="nav_feedback">Feedback</a>
   <a href="#contact"          onclick="closeMenu()" data-i18n="nav_contact">Kontakt</a>
-  <a href="#blog" data-i18n="nav_blog">Blog</a>
+  <a href="#blog"             onclick="closeMenu()" data-i18n="nav_blog">Blog</a>
   <div class="mobile-lang">
     <button class="lang-btn active" onclick="setLang('de');closeMenu()">DE</button>
     <span class="lang-sep">|</span>
@@ -303,15 +305,16 @@
 
 <!-- ── ÜBER MICH ── -->
 <section class="page-section" id="about">
-  <div class="content-col">
-    <div class="card about-card reveal">
-      <img class="about-portrait"
+  <div class="content-col-wide">
+    <div class="about-editorial reveal">
+      <img class="about-editorial-img"
         src="images/portrait.webp"
         alt="Portrait Uli K."
       />
-      <div class="about-text-block">
-        <h2 data-i18n="about_title">Über mich</h2>
-        <p data-i18n="about_text">Ich bin Uli K., Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit.</p>
+      <div class="about-editorial-text">
+        <h2 data-i18n="about_title">Menschen begleiten,<br>die sich <em>wirklich</em> verändern wollen.</h2>
+        <p data-i18n="about_text1">Ich bin Uli K. – Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die an einem Punkt stehen, wo sie spüren: So kann es nicht weitergehen. Oder: Da ist noch mehr möglich.</p>
+        <p data-i18n="about_text2">Was mich antreibt, ist die Überzeugung, dass jeder Mensch die Antworten auf seine wichtigsten Fragen bereits in sich trägt. Meine Aufgabe ist es, den Raum zu schaffen, in dem sie hörbar werden.</p>
         <button class="toggle-btn" onclick="toggleAbout(this)">
           <span data-i18n="about_more">Mehr erfahren</span> <span class="chev">↓</span>
         </button>
@@ -466,8 +469,9 @@ const i18n = {
     nav_process:'Ablauf', nav_feedback:'Feedback', nav_contact:'Kontakt', nav_blog:'Blog',
     hero_tagline:'Persönliches Coaching & Begleitung',
     hero_cta:'Jetzt Kontakt aufnehmen',
-    about_title:'Über mich',
-    about_text:'Ich bin Uli K., Coach für persönliche Entwicklung. Ich helfe Menschen, ihre Stärken zu entdecken und klar ihre Ziele zu verfolgen. Werte: Authentizität, Vertrauen, Klarheit.',
+    about_title:'Menschen begleiten,<br>die sich <em>wirklich</em> verändern wollen.',
+    about_text1:'Ich bin Uli K. – Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die an einem Punkt stehen, wo sie spüren: So kann es nicht weitergehen. Oder: Da ist noch mehr möglich.',
+    about_text2:'Was mich antreibt, ist die Überzeugung, dass jeder Mensch die Antworten auf seine wichtigsten Fragen bereits in sich trägt. Meine Aufgabe ist es, den Raum zu schaffen, in dem sie hörbar werden.',
     about_more:'Mehr erfahren', about_less:'Weniger anzeigen',
     about_focus_label:'Meine Schwerpunkte:',
     focus_1:'Persönliche Entwicklung', focus_2:'Zielklarheit & Strategie', focus_3:'Workshops & Coaching',
@@ -506,8 +510,9 @@ const i18n = {
     nav_process:'Déroulement', nav_feedback:'Avis', nav_contact:'Contact', nav_blog:'Blog',
     hero_tagline:'Coaching personnel & accompagnement',
     hero_cta:'Prendre contact',
-    about_title:'À propos de moi',
-    about_text:'Je suis Uli K., coach en développement personnel. J\'aide les gens à découvrir leurs forces et à poursuivre leurs objectifs avec clarté. Valeurs : authenticité, confiance, clarté.',
+    about_title:'Accompagner les personnes qui veulent <em>vraiment</em> changer.',
+    about_text1:'Je suis Uli K., coach en développement personnel. Je travaille avec des personnes qui sentent qu\'elles sont à un tournant – là où continuer comme avant n\'est plus une option.',
+    about_text2:'Ce qui me motive, c\'est la conviction que chacun porte déjà en soi les réponses à ses questions les plus importantes. Mon rôle est de créer l\'espace pour qu\'elles deviennent audibles.',
     about_more:'En savoir plus', about_less:'Réduire',
     about_focus_label:'Mes domaines :',
     focus_1:'Développement personnel', focus_2:'Clarté des objectifs & stratégie', focus_3:'Ateliers & coaching',
@@ -546,8 +551,9 @@ const i18n = {
     nav_process:'Process', nav_feedback:'Feedback', nav_contact:'Contact', nav_blog:'Blog',
     hero_tagline:'Personal Coaching & Guidance',
     hero_cta:'Get in touch',
-    about_title:'About me',
-    about_text:'I\'m Uli K., a personal development coach. I help people discover their strengths and pursue their goals with clarity. Values: authenticity, trust, clarity.',
+    about_title:'Supporting people who <em>truly</em> want to change.',
+    about_text1:'I\'m Uli K., a personal development coach. I work with people who have reached a point where they feel: things can\'t go on like this. Or: there\'s more possible here.',
+    about_text2:'What drives me is the belief that every person already carries the answers to their most important questions within them. My role is to create the space where they can be heard.',
     about_more:'Learn more', about_less:'Show less',
     about_focus_label:'My focus areas:',
     focus_1:'Personal development', focus_2:'Goal clarity & strategy', focus_3:'Workshops & coaching',
