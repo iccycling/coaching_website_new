@@ -307,24 +307,28 @@
 <section class="page-section" id="about">
   <div class="content-col-wide">
     <div class="about-editorial reveal">
-      <img class="about-editorial-img"
-        src="images/portrait.webp"
-        alt="Portrait Uli K."
-      />
       <div class="about-editorial-text">
-        <h2 data-i18n="about_title">Menschen begleiten,<br>die sich <em>wirklich</em> verändern wollen.</h2>
-        <p data-i18n="about_text1">Ich bin Uli K. – Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die an einem Punkt stehen, wo sie spüren: So kann es nicht weitergehen. Oder: Da ist noch mehr möglich.</p>
-        <p data-i18n="about_text2">Was mich antreibt, ist die Überzeugung, dass jeder Mensch die Antworten auf seine wichtigsten Fragen bereits in sich trägt. Meine Aufgabe ist es, den Raum zu schaffen, in dem sie hörbar werden.</p>
+        <h2 data-i18n="about_title">Manche Fragen brauchen jemanden,<br>der <em>zuhört</em>.</h2>
+        <p data-i18n="about_text1">Ich bin Uli K., Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die spüren, dass da noch mehr möglich ist – beruflich, persönlich oder beides.</p>
+        <p data-i18n="about_text2">Meine Überzeugung: Die meisten Antworten trägt man bereits in sich. Ich helfe, sie zu finden – durch Gespräche, die in die Tiefe gehen, und Schritte, die tragen.</p>
         <button class="toggle-btn" onclick="toggleAbout(this)">
           <span data-i18n="about_more">Mehr erfahren</span> <span class="chev">↓</span>
         </button>
         <div class="about-extra">
-          <p style="font-size:.85rem;color:var(--body-text);margin-bottom:.75rem;" data-i18n="about_focus_label">Meine Schwerpunkte:</p>
-          <ul class="focus-list">
-            <li data-i18n="focus_1">Persönliche Entwicklung</li>
-            <li data-i18n="focus_2">Zielklarheit & Strategie</li>
-            <li data-i18n="focus_3">Workshops & Coaching</li>
-          </ul>
+          <div class="about-extra-inner">
+            <img class="about-portrait-expanded"
+              src="images/portrait.webp"
+              alt="Portrait Uli K."
+            />
+            <div>
+              <p style="font-size:.85rem;color:var(--body-text);margin-bottom:.75rem;" data-i18n="about_focus_label">Meine Schwerpunkte:</p>
+              <ul class="focus-list">
+                <li data-i18n="focus_1">Persönliche Entwicklung</li>
+                <li data-i18n="focus_2">Zielklarheit & Strategie</li>
+                <li data-i18n="focus_3">Workshops & Coaching</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -469,9 +473,9 @@ const i18n = {
     nav_process:'Ablauf', nav_feedback:'Feedback', nav_contact:'Kontakt', nav_blog:'Blog',
     hero_tagline:'Persönliches Coaching & Begleitung',
     hero_cta:'Jetzt Kontakt aufnehmen',
-    about_title:'Menschen begleiten,<br>die sich <em>wirklich</em> verändern wollen.',
-    about_text1:'Ich bin Uli K. – Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die an einem Punkt stehen, wo sie spüren: So kann es nicht weitergehen. Oder: Da ist noch mehr möglich.',
-    about_text2:'Was mich antreibt, ist die Überzeugung, dass jeder Mensch die Antworten auf seine wichtigsten Fragen bereits in sich trägt. Meine Aufgabe ist es, den Raum zu schaffen, in dem sie hörbar werden.',
+    about_title:'Manche Fragen brauchen jemanden,<br>der <em>zuhört</em>.',
+    about_text1:'Ich bin Uli K., Coach für persönliche Entwicklung. Ich arbeite mit Menschen, die spüren, dass da noch mehr möglich ist – beruflich, persönlich oder beides.',
+    about_text2:'Meine Überzeugung: Die meisten Antworten trägt man bereits in sich. Ich helfe, sie zu finden – durch Gespräche, die in die Tiefe gehen, und Schritte, die tragen.',
     about_more:'Mehr erfahren', about_less:'Weniger anzeigen',
     about_focus_label:'Meine Schwerpunkte:',
     focus_1:'Persönliche Entwicklung', focus_2:'Zielklarheit & Strategie', focus_3:'Workshops & Coaching',
@@ -510,9 +514,9 @@ const i18n = {
     nav_process:'Déroulement', nav_feedback:'Avis', nav_contact:'Contact', nav_blog:'Blog',
     hero_tagline:'Coaching personnel & accompagnement',
     hero_cta:'Prendre contact',
-    about_title:'Accompagner les personnes qui veulent <em>vraiment</em> changer.',
-    about_text1:'Je suis Uli K., coach en développement personnel. Je travaille avec des personnes qui sentent qu\'elles sont à un tournant – là où continuer comme avant n\'est plus une option.',
-    about_text2:'Ce qui me motive, c\'est la conviction que chacun porte déjà en soi les réponses à ses questions les plus importantes. Mon rôle est de créer l\'espace pour qu\'elles deviennent audibles.',
+    about_title:'Certaines questions ont besoin de quelqu\'un<br>qui <em>écoute</em>.',
+    about_text1:'Je suis Uli K., coach en développement personnel. Je travaille avec des personnes qui sentent qu\'il y a encore plus de possible – professionnellement, personnellement, ou les deux.',
+    about_text2:'Ma conviction : la plupart des réponses sont déjà en vous. Je vous aide à les trouver – à travers des conversations en profondeur et des pas qui portent.',
     about_more:'En savoir plus', about_less:'Réduire',
     about_focus_label:'Mes domaines :',
     focus_1:'Développement personnel', focus_2:'Clarté des objectifs & stratégie', focus_3:'Ateliers & coaching',
@@ -551,9 +555,9 @@ const i18n = {
     nav_process:'Process', nav_feedback:'Feedback', nav_contact:'Contact', nav_blog:'Blog',
     hero_tagline:'Personal Coaching & Guidance',
     hero_cta:'Get in touch',
-    about_title:'Supporting people who <em>truly</em> want to change.',
-    about_text1:'I\'m Uli K., a personal development coach. I work with people who have reached a point where they feel: things can\'t go on like this. Or: there\'s more possible here.',
-    about_text2:'What drives me is the belief that every person already carries the answers to their most important questions within them. My role is to create the space where they can be heard.',
+    about_title:'Some questions need someone<br>who <em>listens</em>.',
+    about_text1:'I\'m Uli K., a personal development coach. I work with people who sense there\'s more possible – professionally, personally, or both.',
+    about_text2:'My belief: most answers are already within you. I help you find them – through conversations that go deep, and steps that last.',
     about_more:'Learn more', about_less:'Show less',
     about_focus_label:'My focus areas:',
     focus_1:'Personal development', focus_2:'Goal clarity & strategy', focus_3:'Workshops & coaching',
