@@ -248,6 +248,22 @@ nav {
   flex-shrink: 0;
   border: 2px solid var(--border);
 }
+.about-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .9rem;
+  color: var(--body-text);
+  line-height: 1.75;
+  border-left: 2px solid var(--green);
+  padding-left: .85rem;
+  margin-bottom: .25rem;
+}
+.about-background {
+  margin-top: .9rem;
+  font-size: .78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
 @media (max-width: 640px) {
   .about-extra-inner { flex-direction: column; gap: 1rem; }
 }
